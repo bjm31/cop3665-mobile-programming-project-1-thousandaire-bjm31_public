@@ -1,4 +1,4 @@
-package com.example.project1.models;
+package com.example.thousandaire.models;
 
 import java.util.ArrayList;
 
@@ -7,34 +7,34 @@ public class Game {
     private ArrayList<Question> mQuestions;
     private int mCurrentQuestionIndex;
 
-    Game() {
-
+    public Game() {
+        mQuestions = new ArrayList<Question>();
         mCurrentQuestionIndex = 0;
     }
 
-    void AddQuestion(Question newQuestion) {
-
+    public void AddQuestion(Question newQuestion) {
         mQuestions.add(newQuestion);
     }
 
-    Question getCurrentQuestion() {
-
-        return mQuestions.at(mCurrentQuestionIndex);
+    public Question getCurrentQuestion() {
+        return mQuestions.get(mCurrentQuestionIndex);
     }
 
-    Question getNextQuestion() {
-
-        return mQuestion.at(mCurrentQuestionIndex + 1);
+    public Question getNextQuestion() {
+        return mQuestions.get(mCurrentQuestionIndex + 1);
     }
 
-    boolean isFinalQuestion() {
-
+    public boolean isFinalQuestion() {
         return false;
     }
 
-    void proceedToNextQuestion() {
+    public void proceedToNextQuestion() {
+        if (mCurrentQuestionIndex < (mQuestions.size() - 1)) {
+            mCurrentQuestionIndex = (mCurrentQuestionIndex + 1) % mQuestions.size();
+        }
+        else {
 
-        ++mCurrentQuestionIndex;
+        }
     }
 
 }

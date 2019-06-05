@@ -1,3 +1,47 @@
 <resources>
     <string name="app_name">Thousandaire</string>
+
+    //class example
+    <string name="correct_toast">Correct</string>
+    <string name="incorrect_toast">Incorrect</string>
+    //end class example
+
+    //for Project 1
+    <string name="question_mickey">What is the name of Mickey Mouse\'s dog?</string>
+    <string name="choice_pluto">Pluto</string>
+    <string name="choice_goofy">Goofy</string>
+    <string name="choice_minnie">Minnie</string>
+    <string name="choice_daisy">Daisy</string>
+
+    <string name="question_planets">What is the largest planet in our solar system?</string>
+    <string name="choice_earth">Earth</string>
+    <string name="choice_mars">Mars</string>
+    <string name="choice_jupiter">Jupiter</string>
+    <string name="choice_venus">Venus</string>
+
+    <string name="question_gilligan">How many people were originally shipwrecked on Gilligan\'s Island?</string>
+    <string name="choice_two">2</string>
+    <string name="choice_six">6</string>
+    <string name="choice_seven">7</string>
+    <string name="choice_eight">8</string>
+
+    <string name="question_elements">Which of these is not an abbreviation for an element on the periodic table?</string>
+    <string name="choice_tc">Tc</string>
+    <string name="choice_o">O</string>
+    <string name="choice_fe">Fe</string>
+    <string name="choice_e">E</string>
+
+    <string name="question_valletta">The city Valletta is the capital of which European country?</string>
+    <string name="choice_croatia">Croatia</string>
+    <string name="choice_latvia">Latvia</string>
+    <string name="choice_estonia">Estonia</string>
+    <string name="choice_malta">Malta</string>
+
+    <string name="question_distance">Approximately how many million miles is the Earth from the Sun?</string>
+    <string name="choice_one">Pluto</string>
+    <string name="choice_ten">Goofy</string>
+    <string name="choice_oneHundred">Minnie</string>
+    <string name="choice_twoHundred">Daisy</string>
+    //end for Project 1
+
 </resources>

@@ -1,4 +1,4 @@
-package com.example.project1.models;
+package com.example.thousandaire.models;
 
 public class Question {
 
@@ -7,7 +7,7 @@ public class Question {
     private int[] mChoiceIds;
     private int mAmount;
 
-    Question(int questionTextId, int answerId, int[] choiceIds, int amount) {
+    public Question(int questionTextId, int answerId, int[] choiceIds, int amount) {
 
         this.mTextResId = questionTextId;
         this.mAnswer = answerId;
@@ -15,24 +15,19 @@ public class Question {
         this.mAmount = amount;
     }
 
-    int getAmount() {
-
-        return mAmount;
-    }
-
-    int getQuestionTextId() {
-
+    public int getTextResId() {
         return mTextResId;
     }
 
-    int getAnswerId() {
-
+    public int getAnswer() {
         return mAnswer;
     }
 
-    int[] getChoiceIds() {
-
+    public int[] getChoiceIds() {
         return mChoiceIds;
     }
 
+    public int getAmount() {
+        return mAmount;
+    }
 }
