@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //for Project 1
         game.AddQuestion(new Question(R.string.question_mickey, R.string.choice_pluto,
                 new int[]{R.string.choice_pluto, R.string.choice_goofy, R.string.choice_minnie, R.string.choice_daisy},
                 100));
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 new int[]{R.string.choice_one, R.string.choice_ten, R.string.choice_oneHundred, R.string.choice_twoHundred},
                 1000));
 
-        mQuestionTextView = (TextView) findViewById(R.id.question_text_view_project);
+        mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
         choices = game.getCurrentQuestion().getChoiceIds();
         answer = game.getCurrentQuestion().getAnswer();
 

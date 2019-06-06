@@ -6,7 +6,15 @@
     <string name="incorrect_toast">Incorrect</string>
     //end class example
 
-    //for Project 1
+    <string name="go_on_button">Go On</string>
+    <string name="quit_button">Quit</string>
+
+    <string name="game_over_text">I\'m sorry! That is not the correct answer!</string>
+    <string name="quit_game_button">Quit Game</string>
+
+    <string name="score_text">Congratulations!\nYou earned </string>
+    <string name="player_over_button">Player Over</string>
+
     <string name="question_mickey">What is the name of Mickey Mouse\'s dog?</string>
     <string name="choice_pluto">Pluto</string>
     <string name="choice_goofy">Goofy</string>
@@ -42,6 +50,5 @@
     <string name="choice_ten">Goofy</string>
     <string name="choice_oneHundred">Minnie</string>
     <string name="choice_twoHundred">Daisy</string>
-    //end for Project 1
 
 </resources>
