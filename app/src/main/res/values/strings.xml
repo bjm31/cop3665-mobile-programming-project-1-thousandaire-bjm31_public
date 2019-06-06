@@ -13,7 +13,7 @@
     <string name="quit_game_button">Quit Game</string>
 
     <string name="score_text">Congratulations!\nYou earned </string>
-    <string name="player_over_button">Player Over</string>
+    <string name="play_over_button">Player Over</string>
 
     <string name="question_mickey">What is the name of Mickey Mouse\'s dog?</string>
     <string name="choice_pluto">Pluto</string>

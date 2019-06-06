@@ -1,5 +1,6 @@
 package com.example.thousandaire;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,14 +13,14 @@ import com.example.thousandaire.models.Question;
 
 public class MainActivity extends AppCompatActivity {
 
-    Game game = new Game();
-    TextView mQuestionTextView;
-    Button choice_one_button;
-    Button choice_two_button;
-    Button choice_three_button;
-    Button choice_four_button;
-    int choices[];
-    int answer;
+    private Game game = new Game();
+    private TextView mQuestionTextView;
+    private Button choice_one_button;
+    private Button choice_two_button;
+    private Button choice_three_button;
+    private Button choice_four_button;
+    private int choices[];
+    private int answer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,15 +94,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkAnswer(boolean userPressed) {
-        //boolean answer = mQuestionBank[mCurrentIndex].isAnswerTrue();
-
         int answerResId = 0;
         if (userPressed == true) {
-            answerResId = R.string.correct_toast;
+            //answerResId = R.string.correct_toast;
+            Intent i = new Intent(MainActivity.this, ProceedActivity.class);
+            startActivity(i);
         } else {
-            answerResId = R.string.incorrect_toast;
+            //answerResId = R.string.incorrect_toast;
+            Intent i = new Intent(MainActivity.this, GameOverActivity.class);
+            startActivity(i);
         }
-        Toast.makeText(MainActivity.this, answerResId, Toast.LENGTH_SHORT).show();
     }
     //end class example
 }
