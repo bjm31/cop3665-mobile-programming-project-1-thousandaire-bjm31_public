@@ -21,19 +21,26 @@ public class Game {
     }
 
     public Question getNextQuestion() {
-        return mQuestions.get(mCurrentQuestionIndex + 1);
+        if (!isFinalQuestion()) {
+            return mQuestions.get(mCurrentQuestionIndex + 1);
+        }
+        else {
+            return null;
+        }
     }
 
     public boolean isFinalQuestion() {
-        return false;
+        if (mCurrentQuestionIndex == mQuestions.size() - 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public void proceedToNextQuestion() {
         if (mCurrentQuestionIndex < (mQuestions.size() - 1)) {
             mCurrentQuestionIndex = (mCurrentQuestionIndex + 1) % mQuestions.size();
-        }
-        else {
-
         }
     }
 

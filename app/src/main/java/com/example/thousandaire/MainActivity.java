@@ -79,11 +79,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //game.getNextQuestion();
         updateQuestion();
     }
 
-    //class example
     private void updateQuestion() {
         int question = game.getCurrentQuestion().getTextResId();
         mQuestionTextView.setText(question);
@@ -95,15 +93,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void checkAnswer(boolean userPressed) {
         int answerResId = 0;
-        if (userPressed == true) {
-            //answerResId = R.string.correct_toast;
+        if (userPressed) {
+            game.proceedToNextQuestion();
             Intent i = new Intent(MainActivity.this, ProceedActivity.class);
             startActivity(i);
-        } else {
-            //answerResId = R.string.incorrect_toast;
+            updateQuestion();
+        }
+        else {
             Intent i = new Intent(MainActivity.this, GameOverActivity.class);
             startActivity(i);
         }
     }
-    //end class example
 }
