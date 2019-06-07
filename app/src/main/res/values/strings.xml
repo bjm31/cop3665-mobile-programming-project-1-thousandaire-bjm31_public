@@ -12,7 +12,6 @@
     <string name="game_over_text">I\'m sorry! That is not the correct answer!</string>
     <string name="quit_game_button">Quit Game</string>
 
-    <string name="score_text">Congratulations!\nYou earned </string>
     <string name="play_over_button">Player Over</string>
 
     <string name="question_mickey">What is the name of Mickey Mouse\'s dog?</string>

@@ -8,7 +8,7 @@ public class Game {
     private int mCurrentQuestionIndex;
 
     public Game() {
-        mQuestions = new ArrayList<Question>();
+        mQuestions = new ArrayList<>();
         mCurrentQuestionIndex = 0;
     }
 
@@ -22,7 +22,8 @@ public class Game {
 
     public Question getNextQuestion() {
         if (!isFinalQuestion()) {
-            return mQuestions.get(mCurrentQuestionIndex + 1);
+            int nextIndex = mCurrentQuestionIndex + 1;
+            return mQuestions.get(nextIndex);
         }
         else {
             return null;
@@ -40,7 +41,7 @@ public class Game {
 
     public void proceedToNextQuestion() {
         if (mCurrentQuestionIndex < (mQuestions.size() - 1)) {
-            mCurrentQuestionIndex = (mCurrentQuestionIndex + 1) % mQuestions.size();
+            ++mCurrentQuestionIndex;
         }
     }
 
