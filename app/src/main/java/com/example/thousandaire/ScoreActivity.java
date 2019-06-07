@@ -8,13 +8,13 @@ import android.widget.TextView;
 
 public class ScoreActivity extends AppCompatActivity {
 
-    private int mTotalScore = 0;
+    private int mScore = 0;
 
-    private static final String EXTRA_TOTAL_SCORE = "total_score";
+    private static final String EXTRA_SCORE = "total_score";
 
-    public static Intent newIntent(Context packageContext, int totalScore) {
+    public static Intent newIntent(Context packageContext, int score) {
         Intent intent = new Intent(packageContext, ScoreActivity.class);
-        intent.putExtra(EXTRA_TOTAL_SCORE, totalScore);
+        intent.putExtra(EXTRA_SCORE, score);
         return intent;
     }
 
@@ -23,9 +23,9 @@ public class ScoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
 
-        mTotalScore = getIntent().getIntExtra(EXTRA_TOTAL_SCORE, 0);
+        mScore = getIntent().getIntExtra(EXTRA_SCORE, 0);
 
-        String mScoreText = "Congratulations! You earned $ " + mTotalScore + ".";
+        String mScoreText = "Congratulations! You earned $" + mScore + ".";
         TextView mScoreTextView = (TextView) findViewById(R.id.score_text_view);
         mScoreTextView.setText(mScoreText);
     }

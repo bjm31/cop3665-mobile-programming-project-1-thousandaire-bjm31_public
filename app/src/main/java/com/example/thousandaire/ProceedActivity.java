@@ -1,5 +1,6 @@
 package com.example.thousandaire;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -21,12 +22,17 @@ public class ProceedActivity extends AppCompatActivity {
 
     private static final String EXTRA_CURRENT_SCORE = "current_score";
     private static final String EXTRA_NEXT_SCORE = "next_score";
+    private static final String EXTRA_GO_ON = "go_on";
 
     public static Intent newIntent(Context packageContext, int currentScore, int nextScore) {
         Intent intent = new Intent(packageContext, ProceedActivity.class);
         intent.putExtra(EXTRA_CURRENT_SCORE, currentScore);
         intent.putExtra(EXTRA_NEXT_SCORE, nextScore);
         return intent;
+    }
+
+    public static boolean wasGoOn(Intent result) {
+        return result.getBooleanExtra(EXTRA_GO_ON, false);
     }
 
     @Override
@@ -47,8 +53,8 @@ public class ProceedActivity extends AppCompatActivity {
         mGoOnButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ProceedActivity.this, MainActivity.class);
-                startActivity(i);
+                setGoOnResult(true);
+                finish();
             }
         });
 
@@ -60,5 +66,12 @@ public class ProceedActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    private void setGoOnResult(boolean isGoOn) {
+        Intent data = new Intent();
+        data.putExtra(EXTRA_GO_ON, isGoOn);
+        setResult(RESULT_OK, data);
+
     }
 }

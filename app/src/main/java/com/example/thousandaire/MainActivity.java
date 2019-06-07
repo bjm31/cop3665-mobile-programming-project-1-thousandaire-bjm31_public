@@ -1,5 +1,6 @@
 package com.example.thousandaire;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,16 +21,14 @@ public class MainActivity extends AppCompatActivity {
     private Button mChoiceTwoButton;
     private Button mChoiceThreeButton;
     private Button mChoiceFourButton;
+    private int question;
     private int choices[];
     private int answer;
     private int mCurrentScore;
     private int mNextScore;
+    private boolean mIsGoOn;
 
-    private static final String TAG = "MainActivity";
-    private static final String KEY_INDEX = "index";
-    private static final String KEY_CURRENT_SCORE = "current_score";
-    private static final String KEY_NEXT_SCORE = "next_score";
-    private static final String KEY_TOTAL_SCORE = "total_score";
+    private static final int REQUEST_CODE_GO_ON = 0;
 
     private void createGame() {
         mGame = new Game();
@@ -54,21 +53,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != Activity.RESULT_OK) {
+            return;
+        }
+
+        if (requestCode == REQUEST_CODE_GO_ON) {
+            if (data == null) {
+                return;
+            }
+            mGame.proceedToNextQuestion();
+            updateQuestion();
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate(Bundle) called");
         setContentView(R.layout.activity_main);
 
-        if (savedInstanceState != null) {
-            //mTotalScore = savedInstanceState.getInt(KEY_TOTAL_SCORE, 0);
-        }
-        else {
-            createGame();
-        }
+        createGame();
 
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
-        choices = mGame.getCurrentQuestion().getChoiceIds();
-        answer = mGame.getCurrentQuestion().getAnswer();
 
         mChoiceOneButton = (Button) findViewById(R.id.choice_one_button);
         mChoiceOneButton.setOnClickListener(new View.OnClickListener(){
@@ -98,19 +104,16 @@ public class MainActivity extends AppCompatActivity {
                 checkAnswer(choices[3] == answer);
             }
         });
-
         updateQuestion();
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-        Log.i(TAG, "onSaveInstanceState");
-        //savedInstanceState.putInt(KEY_TOTAL_SCORE, mTotalScore);
-    }
+
 
     private void updateQuestion() {
-        int question = mGame.getCurrentQuestion().getTextResId();
+        choices = mGame.getCurrentQuestion().getChoiceIds();
+        answer = mGame.getCurrentQuestion().getAnswer();
+        question = mGame.getCurrentQuestion().getTextResId();
+
         mQuestionTextView.setText(question);
         mChoiceOneButton.setText(choices[0]);
         mChoiceTwoButton.setText(choices[1]);
@@ -120,13 +123,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void checkAnswer(boolean userPressed) {
         mCurrentScore = mGame.getCurrentQuestion().getAmount();
+
         if (userPressed) {
             if (!mGame.isFinalQuestion()) {
                 mNextScore = mGame.getNextQuestion().getAmount();
-                mGame.proceedToNextQuestion();
-                updateQuestion();
                 Intent i = ProceedActivity.newIntent(MainActivity.this, mCurrentScore, mNextScore);
-                startActivity(i);
+                startActivityForResult(i, REQUEST_CODE_GO_ON);
             }
             else {
                 Intent i = ScoreActivity.newIntent(MainActivity.this, mCurrentScore);;
