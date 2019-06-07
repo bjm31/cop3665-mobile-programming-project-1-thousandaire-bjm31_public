@@ -12,7 +12,7 @@
     <string name="game_over_text">I\'m sorry! That is not the correct answer!</string>
     <string name="quit_game_button">Quit Game</string>
 
-    <string name="play_over_button">Player Over</string>
+    <string name="play_over_button">Play Over</string>
 
     <string name="question_mickey">What is the name of Mickey Mouse\'s dog?</string>
     <string name="choice_pluto">Pluto</string>
@@ -45,9 +45,9 @@
     <string name="choice_malta">Malta</string>
 
     <string name="question_distance">Approximately how many million miles is the Earth from the Sun?</string>
-    <string name="choice_one">Pluto</string>
-    <string name="choice_ten">Goofy</string>
-    <string name="choice_oneHundred">Minnie</string>
-    <string name="choice_twoHundred">Daisy</string>
+    <string name="choice_one">1</string>
+    <string name="choice_ten">10</string>
+    <string name="choice_oneHundred">100</string>
+    <string name="choice_twoHundred">200</string>
 
 </resources>

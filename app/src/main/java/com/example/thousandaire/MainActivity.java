@@ -107,12 +107,10 @@ public class MainActivity extends AppCompatActivity {
         updateQuestion();
     }
 
-
-
     private void updateQuestion() {
+        question = mGame.getCurrentQuestion().getTextResId();
         choices = mGame.getCurrentQuestion().getChoiceIds();
         answer = mGame.getCurrentQuestion().getAnswer();
-        question = mGame.getCurrentQuestion().getTextResId();
 
         mQuestionTextView.setText(question);
         mChoiceOneButton.setText(choices[0]);
@@ -121,10 +119,9 @@ public class MainActivity extends AppCompatActivity {
         mChoiceFourButton.setText(choices[3]);
     }
 
-    private void checkAnswer(boolean userPressed) {
+    private void checkAnswer(boolean isRightAnswer) {
         mCurrentScore = mGame.getCurrentQuestion().getAmount();
-
-        if (userPressed) {
+        if (isRightAnswer) {
             if (!mGame.isFinalQuestion()) {
                 mNextScore = mGame.getNextQuestion().getAmount();
                 Intent i = ProceedActivity.newIntent(MainActivity.this, mCurrentScore, mNextScore);
