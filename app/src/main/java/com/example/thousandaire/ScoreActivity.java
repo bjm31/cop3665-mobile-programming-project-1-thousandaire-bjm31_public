@@ -39,6 +39,7 @@ public class ScoreActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(ScoreActivity.this, MainActivity.class);
                 startActivity(i);
+                finish();
             }
         });
 
@@ -46,7 +47,7 @@ public class ScoreActivity extends AppCompatActivity {
         mQuitGameButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                System.exit(0);
+                finish();
             }
         });
     }

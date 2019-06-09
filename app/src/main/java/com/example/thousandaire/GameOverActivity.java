@@ -18,7 +18,7 @@ public class GameOverActivity extends AppCompatActivity {
         mQuitGameButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                System.exit(0);
+                finish();
             }
         });
     }

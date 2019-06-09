@@ -31,10 +31,6 @@ public class ProceedActivity extends AppCompatActivity {
         return intent;
     }
 
-    public static boolean wasGoOn(Intent result) {
-        return result.getBooleanExtra(EXTRA_GO_ON, false);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +58,10 @@ public class ProceedActivity extends AppCompatActivity {
         mQuitButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                setGoOnResult(false);
                 Intent i = ScoreActivity.newIntent(ProceedActivity.this, mCurrentScore);;
                 startActivity(i);
+                finish();
             }
         });
     }
@@ -71,7 +69,12 @@ public class ProceedActivity extends AppCompatActivity {
     private void setGoOnResult(boolean isGoOn) {
         Intent data = new Intent();
         data.putExtra(EXTRA_GO_ON, isGoOn);
-        setResult(RESULT_OK, data);
+        if (isGoOn) {
+            setResult(RESULT_OK, data);
+        }
+        else {
+            setResult(RESULT_CANCELED, data);
+        }
 
     }
 }

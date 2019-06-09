@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private int answer;
     private int mCurrentScore;
     private int mNextScore;
-    private boolean mIsGoOn;
 
     private static final int REQUEST_CODE_GO_ON = 0;
 
@@ -54,16 +53,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode != Activity.RESULT_OK) {
-            return;
-        }
-
         if (requestCode == REQUEST_CODE_GO_ON) {
-            if (data == null) {
-                return;
+            if(resultCode == Activity.RESULT_OK) {
+                mGame.proceedToNextQuestion();
+                updateQuestion();
             }
-            mGame.proceedToNextQuestion();
-            updateQuestion();
+            else {
+                finish();
+            }
         }
     }
 
@@ -130,11 +127,13 @@ public class MainActivity extends AppCompatActivity {
             else {
                 Intent i = ScoreActivity.newIntent(MainActivity.this, mCurrentScore);;
                 startActivity(i);
+                finish();
             }
         }
         else {
             Intent i = new Intent(MainActivity.this, GameOverActivity.class);
             startActivity(i);
+            finish();
         }
     }
 }
